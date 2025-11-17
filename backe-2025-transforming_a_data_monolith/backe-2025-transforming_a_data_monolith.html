@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Backe (2025): Transforming a Data Monolith into a Network of FAIR Digital Objects</title>
+    <base target="_blank"/>
+    <style>
+        body {
+          font-family: "Helvetica", "Arial", sans-serif;
+          font-size: 25pt;
+          max-width: 90%;
+          margin-top: 5%;
+          padding-top: 0;
+          padding-left: 5%;
+        }
+        h1, h2, h3 {
+          font-size: 37pt;
+          margin-top: 5%;
+        }
+        span.red {
+          color: #bb4422;
+        }
+        span.blue {
+          color: #224499;
+        }
+        span.green {
+          color: #006622;
+        }
+        span.darkgrey {
+          color: #777777;
+        }
+        .datatable {
+          font-size: 20pt;
+        }
+        .bold {
+          font-weight: bold;
+        }
+        table, th, td {
+          border: 1px solid;
+          border-collapse: collapse;
+          background-color: #e4e4e4;
+        }
+        th, td {
+          padding: 10px;
+        }
+        div.code {
+          font-weight: bold;
+          background-color: #e4e4e4;
+        }
+        span.sql_black {
+          color: #222222;
+        }
+        span.sql_red {
+          color: #cc2222;
+        }
+        span.json_key {
+          color: #0055aa;
+        }
+        span.json_value {
+          color: #003366;
+        }
+        .noborder {
+          border: none;
+          background-color: #ffffff;
+          padding: 0px;
+          font-size: 8pt;
+        }
+        div.references {
+        }
+        a {
+          color: #cc0000;
+        }
+        div.omissions {
+          font-size: 15pt;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+<h1 id="transforming-a-data-monolith-into-a-network-of-fair-digital-objects">Transforming a Data Monolith into a Network of FAIR Digital Objects</h1>
+<p>Christian Backe, DFKI Robotics Innovation Center</p>
+<p>FAIR in Action, Göttingen, 2025-10-01</p>
+<p><img height="100px%/" src="img/dfki_logo_sw.jpg"/>
+<img height="100px%/" src="img/robival_logo.jpeg"/>
+<img height="100px%/" src="img/fdo_connect_logo.png"/>
+<img height="100px/" src="img/mission_ki_logo.png"/></p>
+</div>
+
+<hr/>
+
+<div>
+<h2 id="overview">Overview</h2>
+<p>
+ 1. FAIR Digital Objects<br/>
+ 2. RoBivaL Monolith<br/>
+ 3. Ad-Hoc Semantics<br/>
+ 4. Transformation Demo<br/>
+ 5. Takeaways<br/></p>
+<p>
+</p>
+<p>
+ References<br/>
+ Omissions<br/>
+ Issues and Pitfalls<br/></p>
+<div style="text-align: right;">1</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<h2 id="fair-digital-objects">FAIR Digital Objects</h2>
+<p>(<span class="red">Subject</span>, <span class="blue">Predicate</span>, <span class="red">Object</span>)</p>
+<div style="text-align: right;">2</div>
+</div>
+
+<hr/>
+
+<div>
+<h2 id="robival-monolith">RoBivaL Monolith</h2>
+<p>250 million datapoints, 1.4 GB memory, 3 Zip archives</p>
+<p><img src="img/zenodo1.png" width="44%"/>
+<img src="img/zenodo2.png" width="44%"/></p>
+<div style="text-align: right;">3</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><b>Access</b><br/>“I only need 500 samples.”</p>
+<p><b>Mutation</b><br/>“Does your update affect my analysis?”</p>
+<p><b>Provenance</b><br/>“My discovery is based on these 200
+observations.”</p>
+<div style="text-align: right;">4</div>
+</div>
+
+<hr/>
+
+<div>
+<h2 id="ad-hoc-semantics">Ad-Hoc Semantics</h2>
+<p>README, Spec files</p>
+<p><img src="img/zenodo1.png" width="44%"/>
+<img src="img/zenodo2.png" width="44%"/></p>
+<div style="text-align: right;">5</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p>“What is the <b>meaning</b> of column name <span class="red"><b><code>robot_key</code></b></span>?”</p>
+<p>“Which <b>measuring unit</b> has value <span class="green"><b><code>38.0</code></b></span>?”</p>
+<p>“<b>How</b> was parameter <span class="blue"><b><code>travel_time</code></b></span> measured?”</p>
+<div style="text-align: right;">6</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<h2 id="transformation-demo">Transformation Demo</h2>
+<p>Experiment Run into Linked Data</p>
+<div style="text-align: right;">7</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<h2 id="original-data-and-metadata">Original Data and Metadata</h2>
+<div style="text-align: right;">8</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<div class="datatable bold">
+<pre> <span class="darkgrey">run__obstacle_avoidance.csv</span>
+</pre>
+</div>
+<div class="datatable">
+<table>
+<tbody><tr>
+<th class="datatable">
+<code>run_id</code>
+</th>
+<th class="datatable">
+<code>experiment_key</code>
+</th>
+<th class="datatable">
+<code>robot_key</code>
+</th>
+<th class="datatable">
+<code>travel_time</code>
+</th>
+<th class="datatable">
+...
+</th>
+</tr>
+<tr>
+<td align="right" class="datatable">
+<code>42</code>
+</td>
+<td class="datatable">
+<code>obstacle_avoidance</code>
+</td>
+<td class="datatable">
+<code>artemis</code>
+</td>
+<td align="right" class="datatable">
+<code>38.0</code>
+</td>
+<td class="datatable">
+...
+</td>
+</tr>
+<tr>
+<td align="right" class="datatable">
+...
+</td>
+<td class="datatable">
+...
+</td>
+<td class="datatable">
+...
+</td>
+<td align="right" class="datatable">
+...
+</td>
+<td class="datatable">
+...
+</td>
+</tr>
+</tbody></table>
+</div>
+<div style="text-align: right;">9</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<div class="code">
+<pre>
+
+ <span class="darkgrey">// schema.sql</span>
+
+ <span class="sql_black">robot_key</span> <span class="sql_red">TEXT NOT NULL</span>
+
+ <span class="sql_black">travel_time</span> <span class="sql_red">REAL NOT NULL</span>
+
+</pre>
+</div>
+<div style="text-align: right;">10</div>
+</div>
+
+<hr/>
+
+<div>
+<div class="code">
+<pre>
+
+ <span class="darkgrey">// parameter.json</span>
+
+ <span class="json_key">"robot_key"</span>: {
+     <span class="json_key">"possible_values"</span>: [<span class="json_value">"artemis"</span>, ...]
+ }
+
+ <span class="json_key">"travel_time"</span>: {
+     <span class="json_key">"unit"</span>: <span class="json_value">"s"</span>
+ }
+
+</pre>
+</div>
+<div style="text-align: right;">11</div>
+</div>
+
+<hr/>
+
+<div>
+<div class="code">
+<pre>
+
+ <span class="darkgrey">// obstacle_avoidance.json</span>
+
+ <span class="json_key">"robot_key"</span>: {
+     <span class="json_key">"role"</span>: <span class="json_value">"independent"</span>
+ }
+
+ <span class="json_key">"travel_time"</span>: {
+     <span class="json_key">"role"</span>: <span class="json_value">"dependent"</span>
+ }
+
+</pre>
+</div>
+<div style="text-align: right;">12</div>
+</div>
+
+<hr/>
+
+<div>
+<div class="code">
+<pre>
+
+ <span class="darkgrey">// obstacle_avoidance-description.md</span>
+
+ The objective of the obstacle avoidance
+ experiment is ...
+
+</pre>
+</div>
+<div style="text-align: right;">13</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<h2 id="transformation-into-linked-data">Transformation into Linked
+Data</h2>
+<div style="text-align: right;">14</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<div class="datatable bold">
+<pre> <span class="darkgrey">run__obstacle_avoidance.csv</span>
+</pre>
+</div>
+<div class="datatable">
+<table>
+<tbody><tr>
+<th class="datatable">
+<code>run_id</code>
+</th>
+<th class="datatable">
+<code>experiment_key</code>
+</th>
+<th class="datatable">
+<code>robot_key</code>
+</th>
+<th class="datatable">
+<code>travel_time</code>
+</th>
+<th class="datatable">
+...
+</th>
+</tr>
+<tr>
+<td align="right" class="datatable">
+<code>42</code>
+</td>
+<td class="datatable">
+<code>obstacle_avoidance</code>
+</td>
+<td class="datatable">
+<code>artemis</code>
+</td>
+<td align="right" class="datatable">
+<code>38.0</code>
+</td>
+<td class="datatable">
+...
+</td>
+</tr>
+<tr>
+<td align="right" class="datatable">
+...
+</td>
+<td class="datatable">
+...
+</td>
+<td class="datatable">
+...
+</td>
+<td align="right" class="datatable">
+...
+</td>
+<td class="datatable">
+...
+</td>
+</tr>
+</tbody></table>
+</div>
+<div style="text-align: right;">15</div>
+</div>
+
+<hr/>
+
+<div>
+<div class="code">
+<pre>
+
+ <span class="darkgrey">// Run42.ttl</span>
+
+ <span class="red">Run42</span>
+   <span class="blue">type</span> <span class="red">ExperimentRun</span> ;
+   <span class="blue">hasExperimentType</span> <span class="red">ObstacleAvoidance</span> ;
+   <span class="blue">observedRobot</span> <span class="red">Artemis</span> ;
+   <span class="blue">travelTime</span> <span class="green">38.0</span> ;
+ .
+
+</pre>
+</div>
+<div style="text-align: right;">16</div>
+</div>
+
+<hr/>
+
+<div>
+<div class="code">
+<pre>
+
+ <span class="red">http://w3id.org/
+     RoBivaL/FDORecord/Payload/
+         ExperimentRun/
+             Run42</span>
+
+ <span class="blue">http://www.w3.org/
+     1999/02/22-rdf-syntax-ns#
+         type</span>
+
+ <span class="green">38.0</span>
+
+</pre>
+</div>
+<div style="text-align: right;">17</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/Run42_horizontal_overview.svg" width="100%"/></p>
+<div style="text-align: right;">18</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/travelTime_solo.svg" width="100%"/></p>
+<div style="text-align: right;">19</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/travelTime.svg" width="100%"/></p>
+<div style="text-align: right;">20</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/observedRobot_solo.svg" width="100%"/></p>
+<div style="text-align: right;">21</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/observedRobotAvailableRobotArtemis.svg" width="100%"/></p>
+<div style="text-align: right;">22</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/ObstacleAvoidance_solo.svg" width="100%"/></p>
+<div style="text-align: right;">23</div>
+</div>
+
+<hr/>
+
+<div>
+<p><img src="graphics/render/ObstacleAvoidance_full.svg" width="85%"/></p>
+<div style="text-align: right;">24</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/ExperimentRun_solo.svg" width="100%"/></p>
+<div style="text-align: right;">25</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/ExperimentRun.svg" width="100%"/></p>
+<div style="text-align: right;">26</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/Run42_vertical_overview.svg" width="80%"/></p>
+<div style="text-align: right;">27</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/Run42_full_left.svg" width="12.6%"/></p>
+<div style="text-align: right;">28</div>
+</div>
+<hr/>
+
+<div>
+<p> 
+</p>
+<p><img src="graphics/render/Run42_full.svg" width="65%"/></p>
+<div style="text-align: right;">29</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<h2 id="takeaways">Takeaways</h2>
+<div style="text-align: right;">30</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<h2 id="simplicity">Simplicity</h2>
+<p>Flexible modeling + Easy onboarding (but: Pitfalls)</p>
+<div style="text-align: right;">31</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<h2 id="uniformity">Uniformity</h2>
+<p>Interoperability across domains &amp; abstraction levels</p>
+<div style="text-align: right;">32</div>
+</div>
+
+<hr/>
+
+<div>
+<p> 
+</p>
+<h2 id="thank-you">Thank you!</h2>
+<div style="text-align: right;">33</div>
+</div>
+
+<hr/>
+
+<div>
+<h2 id="references">References</h2>
+<div class="references">
+<table class="noborder">
+<tbody><tr class="noborder">
+<td class="noborder">
+<ul>
+<li>This
+<ul>
+<li>Publication: <a href="https://doi.org/10.5281/zenodo.17630785">https://doi.org/10.5281/zenodo.17630785</a></li>
+<li>Source: <a href="https://github.com/cbacke/FAIR-in-Action-2025">https://github.com/cbacke/FAIR-in-Action-2025</a></li>
+<li>Abstract: <a href="https://events.gwdg.de/event/1175/contributions/4203/">https://events.gwdg.de/event/1175/contributions/4203/</a></li>
+</ul></li>
+<li>Data
+<ul>
+<li>RoBivaL Monolith: <a href="https://doi.org/10.5281/zenodo.8424932">https://doi.org/10.5281/zenodo.8424932</a></li>
+<li>RoBivaL FDO Data Model (IRI) <a href="http://w3id.org/RoBivaL">http://w3id.org/RoBivaL</a></li>
+<li>RoBivaL FDO Data Model (Source) <a href="https://github.com/cbacke/RoBivaL">https://github.com/cbacke/RoBivaL</a></li>
+<li>Experimental Research Ontology (IRI) <a href="http://w3id.org/ExperimentalResearchOntology/">http://w3id.org/ExperimentalResearchOntology/</a></li>
+<li>Experimental Research Ontology (Source) <a href="https://github.com/cbacke/ExperimentalResearchOntology">https://github.com/cbacke/ExperimentalResearchOntology</a></li>
+</ul></li>
+<li>Projects
+<ul>
+<li>FDO Connect: <a href="https://robotik.dfki-bremen.de/en/research/projects/fdo-connect">https://robotik.dfki-bremen.de/en/research/projects/fdo-connect</a></li>
+<li>RoBivaL: <a href="https://robotik.dfki-bremen.de/en/research/projects/robival">https://robotik.dfki-bremen.de/en/research/projects/robival</a></li>
+</ul></li>
+<li>FAIR Digital Objects
+<ul>
+<li>FAIR Principles: <a href="https://www.go-fair.org/fair-principles/">https://www.go-fair.org/fair-principles/</a></li>
+<li>FDO Specifications: <a href="https://fairdo.org/specifications/">https://fairdo.org/specifications/</a></li>
+<li>3rd FDO Conference 2026: <a href="https://fairdo.org/fdo-conference-2026-call-for-papers/">https://fairdo.org/fdo-conference-2026-call-for-papers/</a></li>
+</ul></li>
+<li>Tools
+<ul>
+<li>Apache Jena: <a href="https://jena.apache.org/">https://jena.apache.org/</a></li>
+<li>ChatGPT: <a href="https://chatgpt.com/">https://chatgpt.com/</a></li>
+<li>Claude: <a href="https://claude.ai/">https://claude.ai/</a></li>
+<li>Nanodash: <a href="https://nanodash.knowledgepixels.com/">https://nanodash.knowledgepixels.com/</a></li>
+<li><code>nanopub</code> Python Library: <a href="https://pypi.org/project/nanopub/">https://pypi.org/project/nanopub/</a></li>
+<li>Protégé: <a href="https://protege.stanford.edu/">https://protege.stanford.edu/</a></li>
+<li><code>pyshacl</code> Python Library: <a href="https://pypi.org/project/pyshacl/">https://pypi.org/project/pyshacl/</a></li>
+<li><code>rdflib</code> Python Library: <a href="https://pypi.org/project/rdflib/">https://pypi.org/project/rdflib/</a></li>
+<li>w3id.org Home: <a href="https://w3id.org/">https://w3id.org/</a></li>
+<li>w3id.org Source: <a href="https://github.com/perma-id/w3id.org">https://github.com/perma-id/w3id.org</a></li>
+</ul></li>
+</ul>
+</td>
+<td class="noborder">
+<ul>
+<li>Semantic Web Specifications
+<ul>
+<li>IRI: <a href="https://www.rfc-editor.org/rfc/rfc3987.html">https://www.rfc-editor.org/rfc/rfc3987.html</a></li>
+<li>OWL: <a href="https://www.w3.org/OWL/">https://www.w3.org/OWL/</a></li>
+<li>RDF: <a href="https://www.w3.org/RDF/">https://www.w3.org/RDF/</a></li>
+<li>SHACL: <a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a></li>
+</ul></li>
+<li>Ontologies and Terminologies
+<ul>
+<li>BIBO: <a href="http://purl.org/ontology/bibo/">http://purl.org/ontology/bibo/</a></li>
+<li>BFO: <a href="https://basic-formal-ontology.org/">https://basic-formal-ontology.org/</a></li>
+<li>CORA (IEEE 1872-2015): <a href="https://ieeexplore.ieee.org/document/7084073">https://ieeexplore.ieee.org/document/7084073</a></li>
+<li>DCTERMS: <a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a></li>
+<li>FDOF: <a href="https://w3id.org/fdof/ontology#">https://w3id.org/fdof/ontology#</a></li>
+<li>FOAF: <a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></li>
+<li>IAO: <a href="https://github.com/information-artifact-ontology/IAO/">https://github.com/information-artifact-ontology/IAO/</a></li>
+<li>ISO 8373-2021: <a href="https://www.iso.org/standard/75539.html">https://www.iso.org/standard/75539.html</a></li>
+<li>OBI: <a href="https://obi-ontology.org/">https://obi-ontology.org/</a></li>
+<li>ORG: <a href="http://www.w3.org/ns/org#">http://www.w3.org/ns/org#</a></li>
+<li>OWL: <a href="http://www.w3.org/2002/07/owl#">http://www.w3.org/2002/07/owl#</a></li>
+<li>QUDT: <a href="http://qudt.org/schema/qudt/">http://qudt.org/schema/qudt/</a></li>
+<li>RDF: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a></li>
+<li>RDFS: <a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a></li>
+<li>SH: <a href="http://www.w3.org/ns/shacl#">http://www.w3.org/ns/shacl#</a></li>
+<li>SOSA / SSN: <a href="https://www.w3.org/TR/vocab-ssn/">https://www.w3.org/TR/vocab-ssn/</a></li>
+<li>UNIT: <a href="http://qudt.org/vocab/unit/">http://qudt.org/vocab/unit/</a></li>
+<li>VANN: <a href="http://purl.org/vocab/vann/">http://purl.org/vocab/vann/</a></li>
+<li>XSD: <a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a>
+</li></ul></li></ul></td>
+</tr>
+</tbody></table>
+</div>
+<div style="text-align: right;">34</div>
+</div>
+
+<hr/>
+
+<div>
+<h2 id="omissions">Omissions</h2>
+<div class="omissions">
+<ul>
+<li>FDO-specific properties
+<ul>
+<li><code>fdof:FAIRDigitalObject</code></li>
+<li><code>fdof:isMaterializedBy</code></li>
+<li><code>dcterms:conformsTo</code></li>
+</ul></li>
+<li>Established ontologies and terminologies
+<ul>
+<li>Upper ontologies</li>
+<li>Domain-specific ontologies</li>
+<li>Basic ontologies and terminologies</li>
+</ul></li>
+<li>Namespace registration and redirection
+<ul>
+<li>w3id.org</li>
+</ul></li>
+<li>“Nice-to-have” properties for humans
+<ul>
+<li><code>rdfs:label</code></li>
+<li><code>rdfs:comment</code></li>
+<li><code>dcterms:title</code></li>
+<li><code>dcterms:description</code></li>
+</ul></li>
+<li>FDO Profiles and SHACL</li>
+</ul>
+</div>
+<div style="text-align: right;">35</div>
+</div>
+
+<hr/>
+
+<div>
+<h2 id="issues-and-pitfalls">Issues and Pitfalls</h2>
+<ul>
+<li>Open World Assumption</li>
+<li><code>sh.targetNode</code></li>
+<li>Resources and Tools</li>
+</ul>
+<div style="text-align: right;">36</div>
+</div>
+
+<hr/>
+
+</body>
+</html>
